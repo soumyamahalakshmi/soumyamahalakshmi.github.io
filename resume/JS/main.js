@@ -1,10 +1,14 @@
 $(document).ready(function(){
-    $("#profile-picture").css({
-        'top':'50%',
-        'margin-top':- $("#profile-picture").outerHeight()/2
+    $(".nb").click(function(){
+        var i = $(".cards:visible").index();
+        var j = $(this).index();
+        $(".cards:visible").animate({top:"-100%", opacity:"0"},"fast","linear",function(){
+            $(".cards:visible").hide();
+            $(".cards").eq(i).css({top:"2.5%", opacity:"1"});
+            $(".cards").eq(j).css({top:"100%", opacity:"0"});
+            $(".cards").eq(j).show();
+            $(".cards").eq(j).animate({top:"2.5%", opacity:"1"},"fast","linear");
+        });
     });
+});
 
-    $("#button-holder").css({
-        'padding-top': ($("#button-holder").outerHeight() - 3.2*$("#button-holder img").outerHeight())/2
-    });
-})
